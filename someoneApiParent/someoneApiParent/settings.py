@@ -37,10 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'users.apps.UsersConfig'
+
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,3 +129,15 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Custom user mdoel
+AUTH_USER_MODEL = 'users.User'
+
+# Allows all frontend ports to access API
+CORS_ORIGIN_ALLOW_ALL = True
+
+# Allows cookies too be returned to front-end
+CORS_ALLOW_CREDENTIALS = True
+
+#Silence url warning
+SILENCED_SYSTEM_CHECKS = ["urls.W002"]
