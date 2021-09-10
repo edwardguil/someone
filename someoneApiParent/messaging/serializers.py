@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from .models import Chat, Message
 
 
 
@@ -9,7 +9,7 @@ class ChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chat
         # Specific the model attributes needed for serialization
-        fields = ['id', 'email','firstName', 'password']
+        fields = ['id', 'admin','participants', 'created']
         # Prevents password from being read
         extra_kwargs = {
             'password': {'write_only': True}
