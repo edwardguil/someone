@@ -26,8 +26,7 @@ class MessageView(APIView):
         serializer.is_valid(raise_exception=True)
         message = serializer.save()
 
-        #Check if message recieve to class if from AI or From User
-        #AI will have id of 1
+     
         if user.id != 1:
             ##Need to get list of current Message history:
             messagesList = Message.objects.filter(chat=chat.id)
@@ -54,15 +53,19 @@ class MessageView(APIView):
             
             ##Need to call AI API Here let, return = aiResponse
             someoneResp = someone(prompt,firstName,aiName)
-
-            aiRequestData = {"text":someoneResp,"user":1,"chat":message.chat.id}
-            serializer = MessageSerializer(data=aiRequestData)
-            serializer.is_valid(raise_exception=True)
-            aiMessage = serializer.save()
-            
-            response = Response()
-            response.data = {"text":someoneResp}
-            return response
+            if someoneResp != '':
+                aiRequestData = {"text":someoneResp,"user":1,"chat":message.chat.id}
+                serializer = MessageSerializer(data=aiRequestData)
+                serializer.is_valid(raise_exception=True)
+                aiMessage = serializer.save()
+                
+                response = Response()
+                response.data = {"text":someoneResp}
+                return response
+            else:
+                response = Response()
+                response.data = {"text":"...."}
+                return response
         else:
             #This is if request is fom the above post request adding AI message into db
             response = Response()

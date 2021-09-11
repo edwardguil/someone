@@ -35,7 +35,6 @@ class UserView(APIView):
         serializer = ChatSerializer(data=chatData)
         serializer.is_valid(raise_exception=True)
         newChat = serializer.save()
-        print(newChat)
         payload = {
             'id': user.id,
             'iat': datetime.datetime.utcnow()
