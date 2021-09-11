@@ -19,19 +19,20 @@ class MessageView(APIView):
     def post(self,request):
         serializer = MessageSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        Message = serializer.save()
+        message = serializer.save()
 
         #Check if message recieve to class if from AI or From User
         #AI will have id of 1
-        if Message.user != 1:
-
+        if message.user.id != 1:
+            ##Need to get list of current Message history:
+            
             ##Need to call AI API Here let, return = aiResponse
             #aiResponse = requests.get('bleh')
             aiResponse = "test response from AI"
             #Once response has been recieve call "domain/messaging/message" to store AI Message in the db
             data = {
                 "user":1,
-                "chat":Message.chat,
+                "chat":message.chat.id,
                 "text": aiResponse}
             
             messageResp = requests.post("http://127.0.0.1:8000/messaging/message/",data=data)
@@ -39,5 +40,7 @@ class MessageView(APIView):
             response.data = {"text":aiResponse}
             return response
         else:
-            #This is if response is from AI
-            pass
+            #This is if request is fom the above post request adding AI message into db
+            response = Response()
+            response.data = {"log":"Storing aiResponse to message table"}
+            return response
