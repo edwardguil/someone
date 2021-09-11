@@ -13,13 +13,14 @@
 		CB91CDD526EB52F700AD6BFA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB91CDD426EB52F700AD6BFA /* Preview Assets.xcassets */; };
 		CB91CDE026EB52F800AD6BFA /* someoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CDDF26EB52F800AD6BFA /* someoneTests.swift */; };
 		CB91CDEB26EB52F800AD6BFA /* someoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CDEA26EB52F800AD6BFA /* someoneUITests.swift */; };
-		CB91CDF926EB553D00AD6BFA /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CDF826EB553D00AD6BFA /* model.swift */; };
 		CB91CDFC26EC142500AD6BFA /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CDFB26EC142500AD6BFA /* Webservice.swift */; };
 		CB91CDFF26EC14D400AD6BFA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CDFE26EC14D400AD6BFA /* LoginViewModel.swift */; };
 		CB91CE0126EC168B00AD6BFA /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0026EC168B00AD6BFA /* MessagesViewModel.swift */; };
 		CB91CE0426EC171200AD6BFA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0326EC171200AD6BFA /* Message.swift */; };
 		CB91CE0626EC265300AD6BFA /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0526EC265300AD6BFA /* MessageResponse.swift */; };
 		CB91CE0A26EC357D00AD6BFA /* ViewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0926EC357D00AD6BFA /* ViewMessages.swift */; };
+		CB91CE0E26EC42D300AD6BFA /* NewLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0D26EC42D300AD6BFA /* NewLaunchView.swift */; };
+		CB91CE1226EC85DC00AD6BFA /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE1126EC85DC00AD6BFA /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +53,14 @@
 		CB91CDE626EB52F800AD6BFA /* someoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = someoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB91CDEA26EB52F800AD6BFA /* someoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = someoneUITests.swift; sourceTree = "<group>"; };
 		CB91CDEC26EB52F800AD6BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB91CDF826EB553D00AD6BFA /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		CB91CDFB26EC142500AD6BFA /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		CB91CDFE26EC14D400AD6BFA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CB91CE0026EC168B00AD6BFA /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		CB91CE0326EC171200AD6BFA /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CB91CE0526EC265300AD6BFA /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 		CB91CE0926EC357D00AD6BFA /* ViewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMessages.swift; sourceTree = "<group>"; };
+		CB91CE0D26EC42D300AD6BFA /* NewLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLaunchView.swift; sourceTree = "<group>"; };
+		CB91CE1126EC85DC00AD6BFA /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +120,6 @@
 				CB91CDFD26EC14B900AD6BFA /* View models */,
 				CB91CDFA26EC13F400AD6BFA /* Services */,
 				CB91CDD326EB52F700AD6BFA /* Preview Content */,
-				CB91CDF826EB553D00AD6BFA /* model.swift */,
 			);
 			path = someone;
 			sourceTree = "<group>";
@@ -179,6 +180,8 @@
 		CB91CE0C26EC3D2F00AD6BFA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CB91CE0D26EC42D300AD6BFA /* NewLaunchView.swift */,
+				CB91CE1126EC85DC00AD6BFA /* ChatView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,11 +317,12 @@
 			files = (
 				CB91CE0126EC168B00AD6BFA /* MessagesViewModel.swift in Sources */,
 				CB91CDD026EB52F200AD6BFA /* ContentView.swift in Sources */,
+				CB91CE1226EC85DC00AD6BFA /* ChatView.swift in Sources */,
 				CB91CE0A26EC357D00AD6BFA /* ViewMessages.swift in Sources */,
-				CB91CDF926EB553D00AD6BFA /* model.swift in Sources */,
 				CB91CDFC26EC142500AD6BFA /* Webservice.swift in Sources */,
 				CB91CE0626EC265300AD6BFA /* MessageResponse.swift in Sources */,
 				CB91CDFF26EC14D400AD6BFA /* LoginViewModel.swift in Sources */,
+				CB91CE0E26EC42D300AD6BFA /* NewLaunchView.swift in Sources */,
 				CB91CDCE26EB52F200AD6BFA /* someoneApp.swift in Sources */,
 				CB91CE0426EC171200AD6BFA /* Message.swift in Sources */,
 			);

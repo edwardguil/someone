@@ -7,22 +7,17 @@
 import Foundation
 
 class LoginViewModel: ObservableObject {
-    
-    var firstName: String = ""
+
     @Published var isAuthenticated: Bool = false
     
-    func login() {
+    func login(firstName:String) {
         
         let defaults = UserDefaults.standard
         
         Webservice().login(firstName: firstName) { result in
             switch result {
                 case .success(let token):
-                    let emptyMessageArr : [Message] = []
-                    let emptyResponseArr : [MessageResponse] = []
-                    defaults.setValue(self.firstName, forKey: "firstName")
-                    defaults.setValue(emptyMessageArr, forKey: "Messages")
-                    defaults.setValue(emptyResponseArr, forKey: "Responses")
+                    defaults.setValue(true, forKey: "hasLaunched")
                     defaults.setValue(token, forKey: "jsonwebtoken")
                     DispatchQueue.main.async {
                         self.isAuthenticated = true

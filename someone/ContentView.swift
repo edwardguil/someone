@@ -9,25 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     
-    
+    @ObservedObject var viewModel : MessageViewModel
     @StateObject private var loginVM = LoginViewModel()
+    @State private var hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunched")
+    @State var currentView = "first"
     
     var body: some View {
-        TextField("First Name", text: $loginVM.firstName)
-        HStack {
-            Spacer()
-            Button("Enter") {
-                loginVM.login()
-            }.buttonStyle(PlainButtonStyle())
-            Spacer()
+        if(!hasLaunched) {
+            NewLaunchView(hasLaunched: $hasLaunched)
+        } else {
+            ChatView(viewModel: viewModel)
         }
     }
 }
 
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}

@@ -8,5 +8,5 @@
 import Foundation
 
 struct MessageResponse: Decodable {
-    let text: String
+    var text: String
 }

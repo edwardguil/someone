@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct someoneApp: App {
+    let messageViewModel = MessageViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel : messageViewModel)
         }
     }
 }

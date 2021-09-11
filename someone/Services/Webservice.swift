@@ -23,7 +23,6 @@ struct MessageRequestBody: Codable {
 
 struct MessageResponseBody: Codable {
     let text: String
-    let detail: String
 }
 
 struct LoginRequestBody: Codable {
@@ -33,7 +32,6 @@ struct LoginRequestBody: Codable {
 
 struct LoginResponse: Codable {
     let token: String?
-    let detail: String
 }
 
 class Webservice {
