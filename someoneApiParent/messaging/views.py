@@ -4,51 +4,34 @@ from rest_framework.serializers import Serializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from someoneApiParent.settings import SECRET_KEY
-from .serializers import ChatSerializer,MessageSerializer
+from .serializers import MessageSerializer
 import requests
 import os
-from .models import *
+from .models import Message, Chat
 from .somone import *
+from users.models import TempUser
+import jwt
 
-class ChatView(APIView): 
-    def post(self,request):
-        serializer = ChatSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        newChat = serializer.save()
-        response = Response()
-        response.data = {"id":newChat.id}
-        return response
-
-    def get(self,request):
-        id = request.query_params['id']
-        if id != None:
-            chat = Chat.objects.get(id=id)
-            serializer = ChatSerializer(chat)
-
-
-        else:
-            chat = Chat.objects.all()
-            serializer = ChatSerializer(chat, many=True)
-        
-        response = Response()
-        response.data = serializer.data
-
-        return response
 
 class MessageView(APIView):
     def post(self,request):
-        serializer = MessageSerializer(data=request.data)
+        
+        encondedJwt = request.headers['token']
+        decodedJwt = jwt.decode(encondedJwt, SECRET_KEY, algorithms=["HS256"])
+        userId = decodedJwt['id']
+        chat = Chat.objects.get(admin_id=userId)
+        user = TempUser.objects.get(pk=userId)
+        decodedRequest = {"chat":chat.id,"user":user.id,"text":request.data['text']}
+        serializer = MessageSerializer(data=decodedRequest)
         serializer.is_valid(raise_exception=True)
         message = serializer.save()
 
-
         #Check if message recieve to class if from AI or From User
         #AI will have id of 1
-        if message.user.id != 1:
+        if user.id != 1:
             ##Need to get list of current Message history:
-            messagesList = Message.objects.filter(chat=message.chat.id)
+            messagesList = Message.objects.filter(chat=chat.id)
             serializer = MessageSerializer(messagesList, many=True)
-            testString = ""
             prompt = " "
             firstName = message.user.firstName
             aiName = "AI"
@@ -76,7 +59,7 @@ class MessageView(APIView):
             serializer = MessageSerializer(data=aiRequestData)
             serializer.is_valid(raise_exception=True)
             aiMessage = serializer.save()
-
+            
             response = Response()
             response.data = {"text":someoneResp}
             return response
@@ -85,19 +68,3 @@ class MessageView(APIView):
             response = Response()
             response.data = {"log":"Storing aiResponse to message table"}
             return response
-
-    def get(self,request):
-        chat = request.query_params['chat']
-        if chat != None:
-            messages = Message.objects.filter(chat=chat)
-            serializer = MessageSerializer(messages, many=True)
-
-
-        else:
-            messages = Message.objects.all()
-            serializer = MessageSerializer(messages, many=True)
-        
-        response = Response()
-        response.data = serializer.data
-
-        return response

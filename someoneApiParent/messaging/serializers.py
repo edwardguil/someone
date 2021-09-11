@@ -1,19 +1,18 @@
 from rest_framework import serializers
-from .models import Chat, Message
-
-
-
-class ChatSerializer(serializers.ModelSerializer):
-    """A Serializer for messaging.models.chat"""
-
-    class Meta:
-        model = Chat
-        fields = ['admin','ai']
+from .models import Message, Chat
 
 class MessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Message
         fields = ['user','chat','text']
+
+class ChatSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Chat
+        fields = ['admin','ai']
+
+    
 
     
