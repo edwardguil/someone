@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    
+    @StateObject private var loginVM = LoginViewModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TextField("First Name", text: $loginVM.firstName)
+        HStack {
+            Spacer()
+            Button("Enter") {
+                loginVM.login()
+            }.buttonStyle(PlainButtonStyle())
+            Spacer()
+        }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
