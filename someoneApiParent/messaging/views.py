@@ -8,6 +8,7 @@ from .serializers import ChatSerializer,MessageSerializer
 import requests
 import os
 from .models import *
+from .somone import *
 
 class ChatView(APIView): 
     def post(self,request):
@@ -47,7 +48,7 @@ class MessageView(APIView):
             ##Need to get list of current Message history:
             messagesList = Message.objects.filter(chat=message.chat.id)
             serializer = MessageSerializer(messagesList, many=True)
-            
+            testString = ""
             prompt = " "
             firstName = message.user.firstName
             aiName = "AI"
@@ -69,12 +70,15 @@ class MessageView(APIView):
                     prompt = prompt + newMessageText
             
             ##Need to call AI API Here let, return = aiResponse
+            someoneResp = someone(prompt,firstName,aiName)
 
-            #aiResponse = requests.get('bleh')
-            aiResponse = "test response from AI"
-            
+            aiRequestData = {"text":someoneResp,"user":1,"chat":message.chat.id}
+            serializer = MessageSerializer(data=aiRequestData)
+            serializer.is_valid(raise_exception=True)
+            aiMessage = serializer.save()
+
             response = Response()
-            response.data = {"text":aiResponse}
+            response.data = {"text":someoneResp}
             return response
         else:
             #This is if request is fom the above post request adding AI message into db

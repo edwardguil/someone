@@ -1,11 +1,9 @@
 import openai
-import requests
-import os
-from requests import exceptions
+openai.api_key = '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'
 
-def someone(prompt,aiName,userName):
+def someone(prompt,userName,aiName):
     """"function which takes message from user, and returns response
-    
+
     params:
         message: str
         chat: int
@@ -13,31 +11,21 @@ def someone(prompt,aiName,userName):
 
     returns AI Response
     """
+    ans = openai.Completion.create(
+      engine = "davinci",
+      prompt=prompt,
+      temperature=0.9,
+      max_tokens=64,
+      top_p=0,
+      frequency_penalty=0.1,
+      presence_penalty=0.6,
+      stop=["\n", " "+userName+":", " "+aiName+":"]
+    )
 
-    header1 = {
-        "Authorization": "Bearer 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"
-    }
+    for a in ans["choices"]:
+        answer=(a["text"])
 
-    params = {
-        "prompt": prompt,
-        "max_tokens": 5,
-        "temperature": 1,
-        "top_p": 1,
-        "n": 1,
-        "stream": False,
-        "logprobs": '',
-        "stop": "\n"
-    }
-    try:
-        davinciUrl = "https://api.openai.com/v1/engines/davinci/completions"
-        resp = requests.post(url=davinciUrl,params=params,headers=header1,verify=False)
-        
-    except requests.exceptions.ConnectionError:
-        print("Connection refused")
-    
-    return "tt"
-
-someone("Blake: Hello AI, how are you? \n","AI","Blake")
+    return answer
 
 
 
