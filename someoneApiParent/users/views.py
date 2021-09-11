@@ -7,8 +7,7 @@ from .serializers import UserSerializer
 import jwt
 import datetime
 from someoneApiParent.settings import SECRET_KEY
-from django.http import JsonResponse
-import sys
+
 
 
 
@@ -17,16 +16,12 @@ class UserView(APIView):
     def post(self, request):
         
         #Check if user exists:
-        try:
-            firstName = request.data['firstName']
-        except:
-            pass
-
-        user = TempUser.objects.filter(firstName=firstName).first()
-        if user is None:
-            serializer = UserSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            newUser = serializer.save()
+        #user = TempUser.objects.filter(firstName=request.data.firstName).first()
+        #if user is None:
+        
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
 
         #Prepping the data for serialzition before checking if it is valid
         #serialized = UserSerializer(data=request.data)
@@ -36,7 +31,7 @@ class UserView(APIView):
         #newUser = serialized.save()
         
         payload = {
-            'id': newUser.id,
+            'id': user.id,
             'iat': datetime.datetime.utcnow()
         }
 
