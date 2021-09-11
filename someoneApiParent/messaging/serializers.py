@@ -8,7 +8,7 @@ class ChatSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Chat
-        fields = ['admin','participants']
+        fields = ['admin','ai']
 
 class MessageSerializer(serializers.ModelSerializer):
 

@@ -1,6 +1,7 @@
 import openai
 import requests
 import os
+from requests import exceptions
 
 def someone(prompt,aiName,userName):
     """"function which takes message from user, and returns response
@@ -27,10 +28,14 @@ def someone(prompt,aiName,userName):
         "logprobs": '',
         "stop": "\n"
     }
-    davinciUrl = "https://api.openai.com/v1/engines/davinci/completions"
-    resp = requests.post(url=davinciUrl,params=params,headers=header1)
-
-    return resp
+    try:
+        davinciUrl = "https://api.openai.com/v1/engines/davinci/completions"
+        resp = requests.post(url=davinciUrl,params=params,headers=header1,verify=False)
+        
+    except requests.exceptions.ConnectionError:
+        print("Connection refused")
+    
+    return "tt"
 
 someone("Blake: Hello AI, how are you? \n","AI","Blake")
 
