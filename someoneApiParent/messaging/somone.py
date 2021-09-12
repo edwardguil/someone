@@ -21,7 +21,6 @@ def someone(prompt,userName,aiName):
       presence_penalty=0.6,
       stop=["\n", " "+userName+":", " "+aiName+":"]
     )
-
     for a in ans["choices"]:
         answer=(a["text"])
 

@@ -8,7 +8,7 @@ import jwt
 import datetime
 from someoneApiParent.settings import SECRET_KEY
 from messaging.models import Chat
-from messaging.serializers import ChatSerializer
+from messaging.serializers import ChatSerializer, MessageSerializer
 
 
 
@@ -40,7 +40,23 @@ class UserView(APIView):
             'iat': datetime.datetime.utcnow()
         }
 
-
+        
+        initialChat = [{'Human':"This is a text message conversation with someone. This someone is kind, attentive and polite."},
+        {"Human":"Hello, who are you?"},
+        {"Someone": "I am someone You created. How can I help you today?"},
+        {"Human": "I'd like to talk about future of the Earth."}]
+        
+        for item in initialChat:
+            if 'Human' in item.keys():
+                messageData = {"user":user.id,"chat":newChat.id,"text":item['Human']}
+                serializer = MessageSerializer(data=messageData)
+                serializer.is_valid(raise_exception=True)
+                newMessage = serializer.save()
+            else:
+                messageData = {"user":1,"chat":newChat.id,"text":item['Someone']}
+                serializer = MessageSerializer(data=messageData)
+                serializer.is_valid(raise_exception=True)
+                newMessage = serializer.save()
 
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')      
         response = Response()

@@ -33,7 +33,7 @@ class MessageView(APIView):
             serializer = MessageSerializer(messagesList, many=True)
             prompt = " "
             firstName = message.user.firstName
-            aiName = "AI"
+            aiName = "Someone"
             for item in serializer.data:
                 if item['user'] != 1:
                     if "The following is a conversation with" in item['text']:
@@ -54,6 +54,8 @@ class MessageView(APIView):
             ##Need to call AI API Here let, return = aiResponse
             someoneResp = someone(prompt,firstName,aiName)
             if someoneResp != '':
+                if ":" in someoneResp:
+                    someoneResp = someoneResp[someoneResp.index(':')+2:]
                 aiRequestData = {"text":someoneResp,"user":1,"chat":message.chat.id}
                 serializer = MessageSerializer(data=aiRequestData)
                 serializer.is_valid(raise_exception=True)
