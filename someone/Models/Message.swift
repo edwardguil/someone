@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Message: Identifiable, Decodable {
+struct Message: Identifiable, Decodable, Hashable {
     var id = UUID()
     var text: String
     var isUser : Bool

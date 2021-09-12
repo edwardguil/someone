@@ -17,8 +17,6 @@
 		CB91CDFF26EC14D400AD6BFA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CDFE26EC14D400AD6BFA /* LoginViewModel.swift */; };
 		CB91CE0126EC168B00AD6BFA /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0026EC168B00AD6BFA /* MessagesViewModel.swift */; };
 		CB91CE0426EC171200AD6BFA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0326EC171200AD6BFA /* Message.swift */; };
-		CB91CE0626EC265300AD6BFA /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0526EC265300AD6BFA /* MessageResponse.swift */; };
-		CB91CE0A26EC357D00AD6BFA /* ViewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0926EC357D00AD6BFA /* ViewMessages.swift */; };
 		CB91CE0E26EC42D300AD6BFA /* NewLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE0D26EC42D300AD6BFA /* NewLaunchView.swift */; };
 		CB91CE1226EC85DC00AD6BFA /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB91CE1126EC85DC00AD6BFA /* ChatView.swift */; };
 /* End PBXBuildFile section */
@@ -57,8 +55,6 @@
 		CB91CDFE26EC14D400AD6BFA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CB91CE0026EC168B00AD6BFA /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		CB91CE0326EC171200AD6BFA /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		CB91CE0526EC265300AD6BFA /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
-		CB91CE0926EC357D00AD6BFA /* ViewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMessages.swift; sourceTree = "<group>"; };
 		CB91CE0D26EC42D300AD6BFA /* NewLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLaunchView.swift; sourceTree = "<group>"; };
 		CB91CE1126EC85DC00AD6BFA /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +159,6 @@
 			children = (
 				CB91CDFE26EC14D400AD6BFA /* LoginViewModel.swift */,
 				CB91CE0026EC168B00AD6BFA /* MessagesViewModel.swift */,
-				CB91CE0926EC357D00AD6BFA /* ViewMessages.swift */,
 			);
 			path = "View models";
 			sourceTree = "<group>";
@@ -172,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				CB91CE0326EC171200AD6BFA /* Message.swift */,
-				CB91CE0526EC265300AD6BFA /* MessageResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,9 +312,7 @@
 				CB91CE0126EC168B00AD6BFA /* MessagesViewModel.swift in Sources */,
 				CB91CDD026EB52F200AD6BFA /* ContentView.swift in Sources */,
 				CB91CE1226EC85DC00AD6BFA /* ChatView.swift in Sources */,
-				CB91CE0A26EC357D00AD6BFA /* ViewMessages.swift in Sources */,
 				CB91CDFC26EC142500AD6BFA /* Webservice.swift in Sources */,
-				CB91CE0626EC265300AD6BFA /* MessageResponse.swift in Sources */,
 				CB91CDFF26EC14D400AD6BFA /* LoginViewModel.swift in Sources */,
 				CB91CE0E26EC42D300AD6BFA /* NewLaunchView.swift in Sources */,
 				CB91CDCE26EB52F200AD6BFA /* someoneApp.swift in Sources */,

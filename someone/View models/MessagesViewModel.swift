@@ -12,8 +12,10 @@ class MessageViewModel: ObservableObject {
     
     @Published var messages = [Message]()
     
-    func getMessageResponse(text:String) {
-        self.messages.append(Message(text:text, isUser:true))
+    func getMessageResponse(text:String, addMessage : Bool = true) {
+        if addMessage {
+            self.messages.append(Message(text:text, isUser:true))
+        }
         let defaults = UserDefaults.standard
         guard let token = defaults.string(forKey: "jsonwebtoken") else {
             return

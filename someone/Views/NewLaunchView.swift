@@ -3,6 +3,7 @@ import Combine
 
 struct NewLaunchView: View {
     
+    @ObservedObject var viewModel: MessageViewModel
     @Binding var hasLaunched : Bool
     @State var mainDescription = ""
     @State var adjectives = ""
@@ -18,7 +19,7 @@ struct NewLaunchView: View {
                 } else if (currentView == "second") {
                     View2(currentView: $currentView.animation(), mainDescription: $mainDescription)
                 } else {
-                    View3(currentView: $currentView.animation(), hasLaunched: $hasLaunched, adjectives: $adjectives, firstName : $firstName, mainDescription : $mainDescription)
+                    View3(viewModel: viewModel, currentView: $currentView.animation(), hasLaunched: $hasLaunched, adjectives: $adjectives, firstName : $firstName, mainDescription : $mainDescription)
                 }
             }
         }
@@ -44,7 +45,11 @@ struct View1: View {
                 Text("you want to talk to someone..?")
                 Button("yes") {
                     self.currentView = "second"
-                }
+                }.padding()
+                .background(Color.purple)
+                .cornerRadius(40)
+                .foregroundColor(.white)
+                .padding(10)
             }
 
         }.transition(.opacity)
@@ -72,9 +77,13 @@ struct View2: View {
                     .frame(width: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onReceive(Just(mainDescription)) { _ in limitText(textLimit) }
                     .multilineTextAlignment(.center)
-                Button("and..") {
+                Button("and") {
                     self.currentView = "third"
-                }
+                }.padding()
+                .background(Color.purple)
+                .cornerRadius(40)
+                .foregroundColor(.white)
+                .padding(10)
             }
 
         }
@@ -91,8 +100,8 @@ struct View2: View {
 
 struct View3: View {
 
+    @ObservedObject var viewModel: MessageViewModel
     @StateObject var loginVM = LoginViewModel()
-    @StateObject var messageVM = MessageViewModel()
     @Binding var currentView: String
     @Binding var hasLaunched : Bool
     @Binding var adjectives : String
@@ -111,12 +120,17 @@ struct View3: View {
                     .onReceive(Just(adjectives)) { _ in limitText(textLimit) }
                     .multilineTextAlignment(.center)
                 Button("Talk With Someone") {
+                    let text = generateHeader(adjectives, mainDescription)
+                    loginVM.login(firstName:firstName, text:text, viewModel:viewModel)
+                    //viewModel.getMessageResponse(text: text)
+                    UserDefaults.standard.setValue(true, forKey: "hasLaunched")
                     self.currentView = "first"
                     self.hasLaunched = true
-                    loginVM.login(firstName:firstName)
-                    let text = generateHeader(adjectives, mainDescription)
-                    messageVM.getMessageResponse(text: text)
-                }
+                }.padding()
+                .background(Color.purple)
+                .cornerRadius(40)
+                .foregroundColor(.white)
+                .padding(10)
             }
         }
         .transition(.opacity)
@@ -132,7 +146,7 @@ struct View3: View {
     
     func generateHeader(_ adjectives: String,_ mainDescription : String) -> String {
         let header = "The following is a conversation with a " + mainDescription
-            + ". " + mainDescription + " is" + adjectives
+            + ". " + "This " + mainDescription + " is" + adjectives + "."
         return header
     }
 }

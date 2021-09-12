@@ -39,7 +39,7 @@ class Webservice {
     func getMessageResponse(token: String, text: String, completion: @escaping (Result<MessageResponseBody, NetworkError>) -> Void) {
         
         
-        guard let url = URL(string: "127.0.0.1:8000/user/") else {
+        guard let url = URL(string: "http://127.0.0.1:8000/messaging/message/") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -51,6 +51,7 @@ class Webservice {
         request.addValue(token, forHTTPHeaderField: "token")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
+        print(request)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -76,7 +77,7 @@ class Webservice {
     
     func login(firstName: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         
-        guard let url = URL(string: "127.0.0.1:8000/user/") else {
+        guard let url = URL(string: "http://127.0.0.1:8000/users/") else {
             completion(.failure(.custom(errorMessage: "URL is not correct")))
             return
         }
