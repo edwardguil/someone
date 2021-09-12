@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Someone - Chat Bot
 Someone utilizes GPT-3 to deliver a unique chat bot app experience. The goal of 'Someone' is too allow a user to define a the style of the chat bot, that can essentially be paramitised to be anyone desired. 
 
@@ -8,9 +7,12 @@ Built with Swift and Swift UI, Someone was built for the 2 day UQCS Hackathon 20
 
 =======
 # someone-api
+<<<<<<< HEAD
 29544286
->>>>>>> 3d61ba3 (Update README.md)
 #This project also uses another repo for the swift app: 
+=======
+
+This project also uses another repo for the swift app: projectId: 29544286
 ## Name
 Someone-api
 Someone
