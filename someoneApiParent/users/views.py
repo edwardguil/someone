@@ -44,7 +44,7 @@ class UserView(APIView):
         initialChat = [{'Human':"This is a text message conversation with someone. This someone is kind, attentive and polite."},
         {"Human":"Hello, who are you?"},
         {"Someone": "I am someone You created. How can I help you today?"},
-        {"Human": "I'd like to talk about future of the Earth."}]
+        {"Human": "Can you please introduce yourself?"}]
         
         for item in initialChat:
             if 'Human' in item.keys():
