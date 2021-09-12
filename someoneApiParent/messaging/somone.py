@@ -16,15 +16,16 @@ def someone(prompt,userName,aiName):
       prompt=prompt,
       temperature=0.9,
       max_tokens=64,
-      top_p=0,
+      top_p=1,
       frequency_penalty=0.1,
-      presence_penalty=0.6,
+      presence_penalty=0.0,
       stop=["\n", " "+userName+":", " "+aiName+":"]
     )
     for a in ans["choices"]:
         answer=(a["text"])
 
     return answer
+
 
 
 
