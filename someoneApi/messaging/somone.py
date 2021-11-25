@@ -1,5 +1,5 @@
 import openai
-openai.api_key = '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'
+openai.api_key = 'add your own openAI key here'
 
 def someone(prompt,userName,aiName):
     """"function which takes message from user, and returns response

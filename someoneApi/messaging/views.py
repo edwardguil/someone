@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework.serializers import Serializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from someoneApiParent.settings import SECRET_KEY
+from someoneApi.settings import SECRET_KEY
 from .serializers import MessageSerializer
 import requests
 import os

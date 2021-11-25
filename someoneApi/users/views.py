@@ -6,7 +6,7 @@ from .models import TempUser
 from .serializers import UserSerializer
 import jwt
 import datetime
-from someoneApiParent.settings import SECRET_KEY
+from someoneApi.settings import SECRET_KEY
 from messaging.models import Chat
 from messaging.serializers import ChatSerializer, MessageSerializer
 
