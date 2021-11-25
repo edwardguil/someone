@@ -1,5 +1,5 @@
 # Someone - An IOS App
-Someone utilizes GPT-3 to deliver a unique chat bot app experience. Someone was built for the 2 day 2021 UQCS Hackathon. It won the "Best Presentation" award. 
+Someone utilizes GPT-3 to deliver a unique chat bot app experience. Someone was built for the 2 day 2021 UQCS Hackathon. It won the "[Best Presentation" award.](https://uqcs.org/showcase/) 
 
 'Someone' allows a user to define a personality and some key personality traits, which then is fed into the model(along with some other keywords) so it can mimmick that style of individual. A key feature is Someone enables users to build a relationship with the model. This was achieved by feeding the entire chat history into the model on each new request, and using GPT-3 to summarise this history as it becomes larger. As per OpenAI's guidelines, the message exchange is heavily filtered, and doesn't allow for any explicit or sensitive content, from either GPT-3 or the user. 
 ### App
